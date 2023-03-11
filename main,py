@@ -1,0 +1,51 @@
+
+    
+from art import logo
+import random
+import os 
+
+EZ_MODE = 10
+HARD_MODE = 5
+
+def clear():
+    os.system('cls')
+
+def main(mode):
+    pc_choice = random.choice(range(1, 100))
+    if mode == "ez":
+        lives = 10
+    elif mode == "hard":
+        lives = 5
+    else:
+        print("Type correct next time hard mode coming")
+        lives = 5
+
+    while not lives == 0:
+        print(f"\nYou got {lives} lives")
+        choice = int(input("\nGuess a number between 1 and 100\n"))
+        if not choice == pc_choice:
+            if choice > pc_choice:
+                print("\nToo high")
+            elif choice < pc_choice:
+                print("\nToo low ")
+
+            lives -= 1
+        else:
+            print(f"You got the number {pc_choice} lucky dog.")
+            break
+    else:
+        print(f"You suck {lives} lives for you. GAME OVER")
+
+
+while True:
+    print(logo)
+    print("\nHello\nFind the number 1 an 100")
+    mode = input("hard or ez\n").lower()
+    main(mode)
+    game_on = input("\nyou wanna keep playing y or n \n").lower()
+    if game_on == "n":
+        clear()
+        print("Bye")
+        break
+    else:
+        clear()
